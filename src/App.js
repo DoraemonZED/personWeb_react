@@ -2,8 +2,13 @@ import Header from './components/Header.jsx'
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Routers from './routers';
+import React, { useEffect } from 'react';
+
 
 function App() {
+  useEffect(() => {
+    React.$api.index()
+  })
   return (
     <div className="App">
       <Header/>
@@ -15,7 +20,7 @@ function App() {
                 <Route
                   key={ item.path }
                   path={ item.path }
-                  exact={ item.exact }
+                  // exact={ item.exact }
                   component={ item.component }
                 ></Route>
               )
@@ -24,7 +29,6 @@ function App() {
         </Switch>
       </Router>
     </div>
-    
   );
 }
 
