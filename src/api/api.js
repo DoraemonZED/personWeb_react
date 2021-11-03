@@ -4,7 +4,7 @@ import request from './request'
 const api = {
     index(){
         return request({
-            url: '/api/',
+            url: '/api/index',
             method: 'get',
             data: {
                 new:123,
