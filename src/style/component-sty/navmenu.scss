@@ -1,0 +1,26 @@
+.list{
+    height: 100%;
+    background-image: linear-gradient(to bottom right, #f2bae8, #0c7bb3);
+    overflow-y: scroll;
+    border-radius: 5px;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+.listitem{
+    height: 50px;
+    line-height: 50px;
+    padding:0 75px;
+    
+    color: rgb(179, 255, 220);
+    font-size: 16px;
+    >.item{
+       cursor: pointer; 
+       width:auto;
+    }
+    >.item:hover{
+        color: #1d1b19;
+        transition: all 1s;
+    }
+}

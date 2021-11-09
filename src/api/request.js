@@ -1,5 +1,6 @@
 
-export default async function request ({ url, method, data={} }){
+export default async function request ({ url, method, data={} }){// fetch请求封装
+    url = '/api' + url;
     if(method === 'get' && Object.keys(data).length){
         let paramsArr = []
         Object.keys(data).forEach(key => paramsArr.push(`${key}=${data[key]}`))
@@ -14,6 +15,6 @@ export default async function request ({ url, method, data={} }){
         method,
         [method === 'get' ? null : 'body']: JSON.stringify(data),
     });
-    const resData = await res.text();
+    const resData = await res.json();
     return resData;
 }

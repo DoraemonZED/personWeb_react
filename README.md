@@ -68,3 +68,93 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+    [
+        {
+            path: '/',
+            name: 'home/个人简介',
+            title: 'home',
+        },
+        {
+            path: '/CSS',
+            name: 'CSS',
+            title: 'CSS样式',
+        },
+        {
+            path: '/SCSS',
+            name: 'SCSS',
+            title: 'SCSS预编译',
+        },
+        {
+            path: '/js',
+            name: 'JavaScript',
+            title: 'JavaScript',
+        },
+        {
+            path: '/ts',
+            name: 'TypeScript',
+            title: 'TypeScript',
+        },
+        {
+            path: '/vue',
+            name: 'VueJS框架',
+            title: 'VueJS',
+        },
+        {
+            path: '/react',
+            name: 'ReactJS框架',
+            title: 'ReactJS',
+        },
+        {
+            path: '/electron',
+            name: 'Electron桌面端',
+            title: 'Electron'
+        },
+        {
+            path: '/cocos',
+            name: 'Cocos Creator',
+            title: 'Cocos Creator'
+        },
+        {
+            path: '/node',
+            name: 'NodeJS服务端',
+            title: 'NodeJS'
+        },
+        {
+            path: '/dart',
+            name: 'Dart/Flutter',
+            title: 'Flutter跨平台'
+        },
+        {
+            path: '/mongo',
+            name: 'MongoDB',
+            title: 'MongoDB',
+        },
+        {
+            path: '/sql',
+            name: 'MySQL',
+            title: 'MySQL'
+        },
+        {
+            path: '/net',
+            name: 'TCP/IP网络协议',
+            title: 'TCP/IP网络协议'
+        },
+        {
+            path: '/os',
+            name: '操作系统/Linux',
+            title: '操作系统/Linux'
+        },
+        {
+            path: '/cpp',
+            name: 'C++/数据结构',
+            title: 'C++/数据结构'
+        },
+        {
+            path: '/git',
+            name: 'git/github',
+            title: 'git/github版本管理'
+        }
+    ]
