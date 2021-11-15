@@ -1,14 +1,31 @@
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Routers from './routers';
-import React from 'react';
+// import Routers from './routers';
+import React,{ useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import './style/app.scss'
 import NavMenu from './components/NavMenu.jsx'
 import Header from './components/Header.jsx'
-
+import Home from './views/home'
+import Itempage from './views/itempage'
 function App() {
-  // useEffect(() => {
-  //   React.$api.index()
-  // })
+  const dispatch = useDispatch()
+  let Routers = []
+  Routers = useSelector(state => state)
+  for(var i of Routers){
+    if(i.path === '/'){
+      i.component = Home
+    }else{
+      i.component = Itempage
+    }
+    
+  }
+
+
+  useEffect(()=>{
+    React.$api.listRoute().then((res)=>{
+      dispatch({ type: 'add_data', data:res.data })
+    })
+  },[dispatch])
 
   return (
     <div className="App">

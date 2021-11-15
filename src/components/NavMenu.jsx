@@ -1,29 +1,24 @@
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import '../style/component-sty/navmenu.scss'
+import {  useSelector } from 'react-redux'
 
 
 export default function Header(){
-    let history = useHistory();
-
-    const [list, setlist] = useState([])
-
-    useEffect(()=>{
-        React.$api.listRoute().then((res)=>{
-            setlist(res.data)
-        })
-    },[])
-
+    let history = useHistory();//路由跳转
+    let route = []
+    route = useSelector( state => state )
 
     function toDetail(path){
-        history.push(path)
+        history.replace(path)
     }
 
+    
     return (
         <div className="list">
             {
-                list.map((item, index) => {
+                route.map((item, index) => {
                     return (
                         <div className="listitem" key={index} onClick={()=>{ toDetail(item.path) }} >
                             <div className="item">{ item.name }</div>
