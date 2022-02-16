@@ -1,0 +1,182 @@
+
+
+.topHead{
+    height: 200px;
+    width: 100%;
+    z-index: 100;
+    // overflow: hidden;
+    position: relative;
+    .bgimg{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .info{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 1280px;
+        margin: auto;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        color: #fff;
+        >.head{
+            margin-bottom: 16px;
+            display: flex;
+            .photo{
+                position: relative;
+                span{
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    height: 16px;
+                    line-height: 16px;
+                    font-size: 12px;
+                    background: #fb7299;
+                    border: 2px solid #eee;
+                    border-radius: 4px;
+                }
+            }
+            .photo>img{
+                height: 60px;
+                width: 60px;
+                border: 2px solid hsla(0,0%,100%,.4);
+                border-radius: 50%;
+            }
+            .intr{
+                padding: 8px 0;
+                margin-left: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                span{
+                    margin-right: 5px;
+                }
+                .title{
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+                .tag{
+                    font-size: 12px;
+                    border-radius: 4px;
+                }
+                p{
+                    margin: 0;
+                    padding: 0;
+                    font-size: 12px;
+                }
+            }
+            .resume{
+                display: flex;
+                align-items: flex-end;
+                margin-left: 30px;
+                >button{
+                    outline: none;
+                    background: rgba(0,0,0,.45);
+                    width: 108px;
+                    height: 34px;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    letter-spacing: 3px;
+                    cursor: pointer;
+                    border: 1px solid #00a1d6;
+                    text-shadow: 2px 2px 4px #00a1d6;
+                    color: #00a1d6;
+                    transition: all 1s;
+                }
+                >button:hover{
+                    border: 1px solid #f5a1b9;
+                    color: #f5a1b9;
+                    text-shadow: 2px 2px 4px #f5a1b9;
+                    box-shadow: 2px 2px 4px #f5a1b9;
+                }
+            }
+        }
+        .setting{
+            height: 100%;
+            box-sizing: border-box;
+            padding-top: 20px;
+        }
+    }
+}
+
+.topNav{
+    width: 1280px;
+    height: 66px;
+    background: #fff;
+    box-shadow: 0 0 0 1px #d1d5db;
+    border-radius: 0 0 4px 4px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    .nav{
+        display: flex;
+        >div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 13px;
+            margin-right: 35px;
+            color: #222;
+            img{
+                width: 18px;
+                height: 18px;
+                margin-right: 5px;
+            }
+        }
+        >div:not(:last-child):hover{
+            color: #00a1d6;
+        }
+        .search{
+            position: relative;
+            img{
+                position: absolute;
+                right: 8px;
+                margin: 0;
+                padding: 0;
+                width: 23px;
+                height: 23px;
+            }
+            input{
+                width: 140px;
+                height: 30px;
+                outline: none;
+                border: 1px solid #cdcdcd;
+                border-radius: 30px;
+                padding: 0 30px 0 10px;
+                box-sizing: border-box;
+                color: #00a1d6;
+            }
+            input:focus{
+                border: 1px solid #00a1d6;
+            }
+        }
+    }
+
+    .logs{
+        display: flex;
+
+        >div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            text-align: center;
+            font-size: 12px;
+            P{
+                color: #99a2aa;
+                margin: 0;
+                padding: 0;
+            }
+            span{
+                color: #222;
+            }
+        }
+    }
+}
