@@ -5,6 +5,7 @@
     width: 100%;
     z-index: 100;
     // overflow: hidden;
+    box-sizing: border-box;
     position: relative;
     .bgimg{
         width: 100%;
@@ -117,16 +118,26 @@
     .nav{
         display: flex;
         >div{
+            color: inherit;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 13px;
             margin-right: 35px;
             color: #222;
+            .link{
+                display: block;
+                color: inherit;
+                font-size: 13px;
+                text-decoration: none;
+                font-weight: 600;
+                line-height: 18px;
+            }
             img{
                 width: 18px;
                 height: 18px;
                 margin-right: 5px;
+                vertical-align: top;
             }
         }
         >div:not(:last-child):hover{

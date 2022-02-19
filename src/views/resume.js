@@ -49,9 +49,6 @@ export default function Resume(){
             }
         }
     }
-    // setInterval(()=>{
-    //     console.log(1)
-    // },1000)
 
     //屏幕滚动时
     let frameRef = useRef()
@@ -81,8 +78,6 @@ export default function Resume(){
         ['PROJECT', '项目参与', '24'],
         ['TIME' ,'开发时间', '356'],
     ]
-    
-    console.log(1)
     
     //技能
     let skill = {
@@ -179,7 +174,7 @@ export default function Resume(){
             item: '桌面应用程序 · WebSite'
         },
     ]
-
+    console.log(1)
     return (
         <div className="frame" ref={ frameRef } onScrollCapture={ () => frameScroll() }>
             <div className="topBar">

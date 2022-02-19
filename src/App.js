@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import "./App.scss";
 
-import Home from './views/home.js'
+import Main from './views/main.js'
 import Resume from './views/resume.js'
 
 
@@ -11,8 +11,8 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/" exact component={ Home }></Route>{/* 首页 */}
-        <Route path="/resume" component={ Resume }></Route>{/* 个人简历页面 */}
+        <Route path="/blog" tsrict component={ Main }></Route>{/* 首页 */}
+        <Route path="/resume" tsrict component={ Resume }></Route>{/* 个人简历页面 */}
       </Switch>
     </Router>
   )

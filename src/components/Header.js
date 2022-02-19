@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.scss";
-import { useHistory } from "react-router-dom"
+import { useHistory, NavLink  } from "react-router-dom"
 
 export default function Header(){
 
@@ -9,6 +9,34 @@ export default function Header(){
     function toResume(){
         history.push('/resume')
     }
+
+    let linkArr = [
+        {
+            img: require('../img/zhuye.png').default,
+            str: '主页',
+            url: '/blog'
+        },
+        {
+            img: require('../img/youxi.png').default,
+            str: '游戏',
+            url: '/blog/game'
+        },
+        {
+            img: require('../img/gongju.png').default,
+            str: '工具',
+            url: '/blog/tool'
+        },
+        {
+            img: require('../img/dongtai.png').default,
+            str: '动态',
+            url: '/blog/space'
+        },
+        {
+            img: require('../img/wangpan.png').default,
+            str: '网盘',
+            url: '/blog/cloud'
+        }
+    ]
 
     return (
         <div className="top">
@@ -40,11 +68,15 @@ export default function Header(){
             </div>
             <div className="topNav">
                 <div className="nav">
-                    <div><img alt="" src={ require('../img/zhuye.png').default } />主页</div>
-                    <div><img alt="" src={ require('../img/youxi.png').default } />游戏</div>
-                    <div><img alt="" src={ require('../img/gongju.png').default } />工具</div>
-                    <div><img alt="" src={ require('../img/dongtai.png').default } />动态</div>
-                    <div><img alt="" src={ require('../img/wangpan.png').default } />网盘</div>
+                    {
+                        linkArr.map((item, index) => (
+                            <div key={index}>
+                                <NavLink className="link" exact activeStyle={{ color:'#00a1d6' }} to={ item.url }>
+                                    <img alt="" src={ item.img } />{item.str}
+                                </NavLink>
+                            </div>
+                        ))
+                    }
                     <div className="search"><img alt="" src={ require('../img/sousuo.png').default } /><input type="text" placeholder="搜索"  /></div>
                 </div>
                 
