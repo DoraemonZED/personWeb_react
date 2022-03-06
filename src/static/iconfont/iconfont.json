@@ -1,0 +1,86 @@
+{
+  "id": "3193271",
+  "name": "blog_pc",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "pc个人博客图标库",
+  "glyphs": [
+    {
+      "icon_id": "27550922",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e76e",
+      "unicode_decimal": 59246
+    },
+    {
+      "icon_id": "27550941",
+      "name": "列表",
+      "font_class": "liebiao",
+      "unicode": "e76f",
+      "unicode_decimal": 59247
+    },
+    {
+      "icon_id": "27550950",
+      "name": "分享",
+      "font_class": "fenxiang",
+      "unicode": "e770",
+      "unicode_decimal": 59248
+    },
+    {
+      "icon_id": "27721049",
+      "name": "应用",
+      "font_class": "yingyong-copy",
+      "unicode": "e76c",
+      "unicode_decimal": 59244
+    },
+    {
+      "icon_id": "27550917",
+      "name": "发送",
+      "font_class": "fasong",
+      "unicode": "e766",
+      "unicode_decimal": 59238
+    },
+    {
+      "icon_id": "27550918",
+      "name": "编辑",
+      "font_class": "bianji",
+      "unicode": "e767",
+      "unicode_decimal": 59239
+    },
+    {
+      "icon_id": "27550930",
+      "name": "点赞",
+      "font_class": "dianzan",
+      "unicode": "e768",
+      "unicode_decimal": 59240
+    },
+    {
+      "icon_id": "27550933",
+      "name": "应用",
+      "font_class": "yingyong",
+      "unicode": "e769",
+      "unicode_decimal": 59241
+    },
+    {
+      "icon_id": "27550943",
+      "name": "添加",
+      "font_class": "tianjia",
+      "unicode": "e76a",
+      "unicode_decimal": 59242
+    },
+    {
+      "icon_id": "27721057",
+      "name": "点赞",
+      "font_class": "dianzan-hover",
+      "unicode": "e76d",
+      "unicode_decimal": 59245
+    },
+    {
+      "icon_id": "27721028",
+      "name": "点赞",
+      "font_class": "dianzan-click",
+      "unicode": "e76b",
+      "unicode_decimal": 59243
+    }
+  ]
+}
