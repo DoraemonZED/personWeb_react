@@ -125,6 +125,13 @@
         linear-gradient(0, rgba(129, 235, 247, 0.1) 2px, transparent 2px),
         linear-gradient(90deg, rgba(184, 242, 248, 0.25) 2px, transparent 4px),
         linear-gradient(0, rgba(184, 242, 248, 0.25) 2px, transparent 4px);
+    pre{
+        padding: 12px;
+        color: #c9d1d9;
+        background: #0d1117;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    }
 }
 
 .text_bg{
