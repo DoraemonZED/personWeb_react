@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import "./main.scss";
 
 import Header from '../components/Header.js'
@@ -8,19 +8,25 @@ import Games from '../components/Games.js'
 import Tools from '../components/Tools.js'
 import Space from '../components/Space.js'
 import Cloud from '../components/Cloud.js'
+// import Error from '../components/Error.js'
 
 export default function Main(){
+
     return (
         <div className="bg">
             <Header />
             <div className="content">
                 <Switch>
-                    <Route path="/blog/" exact component={ Home } />
-                    <Route path="/blog/game" exact component={ Games } />
-                    <Route path="/blog/tool" exact component={ Tools } />
-                    <Route path="/blog/space" exact component={ Space } />
-                    <Route path="/blog/cloud" exact component={ Cloud } />
+                    <Route path="/blog" component={ Home } />
+                    <Route path="/game" exact component={ Games } />
+                    <Route path="/tool" exact component={ Tools } />
+                    <Route path="/space" exact component={ Space } />
+                    <Route path="/cloud" exact component={ Cloud } />
+                    <Redirect from="/*" to="/error" />
                 </Switch>
+            </div>
+            <div style={{ height: '140px',width: '100%', background: '#fff',marginTop: '50px' }}>
+                
             </div>
         </div>
     )

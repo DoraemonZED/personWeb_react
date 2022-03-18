@@ -21,23 +21,39 @@
     border-bottom: 1px solid #e5e9ef;
 }
 .boxTitle_height{
-    height: 40px;
-    line-height: 40px;
+    display: flex;
+    justify-content: space-around;
+    height: 100%;
+    >div{
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding: 10px;
+        box-sizing: border-box;
+        letter-spacing: 3px;
+        flex: 1;
+        cursor: pointer;
+    }
+    >div:hover{
+        color: #00a1d6;
+    }
+    .active{
+        background: rgb(231, 233, 233);
+        color: #00a1d6;
+    }
 }
 .titlenav{
     margin: 0;
     font-size: 13px;
-    color: #222;
-    font-weight: 400;
+    color: rgb(77, 77, 77);
+    font-weight: 600;
     font-family: Microsoft YaHei;
     height: 30px;
     line-height: 30px;
+    cursor: pointer;
+    letter-spacing: 1px;
 }
 
-@keyframes slide-down{
-    0%{transform:scale(1,0);}
-    100%{transform:scale(1,1);}
-}
 .home_title{
     display: flex;
     margin: 10px 15px;
@@ -50,30 +66,38 @@
         >div{
             position: absolute;
             padding-top: 15px;
-            left: -90px;
+            left: -100px;
             width: 300px;
             visibility: hidden;
             transform: translateY(-10px);
             opacity: 0;
             transition: all .5s;
             >div{
+                box-shadow:10px 10px 5px rgb(221, 221, 221);
                 padding: 10px 0;
                 background-color: #FFF;
                 border-radius: 6px;
                 border: solid 1px #e5e9ef;
-                position: relative;
+                box-sizing: border-box;
+                max-height: 450px;
+                overflow-y: auto;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
             }
-            >div::after{
-                content: '';
+            >span{
+                display: block;
                 width: 10px;
                 height: 10px;
                 position: absolute;
-                top: -6px;
-                left: 100px;
+                top: 10px;
+                left: 110px;
                 background-color: #fff;
                 border-top: solid 1px #e5e9ef;
                 border-left: solid 1px #e5e9ef;
                 transform: rotate(45deg);
+            }
+            >div::-webkit-scrollbar{
+                display: none;
             }
         }
     }
@@ -115,29 +139,94 @@
 }
 
 .bg_c{
+    color: #6681af;
     box-sizing: border-box;
     margin: 0 15px;
     padding: 20px;
     background-position: 35px 0;
     background-size: 30px 30px, 30px 30px, 120px 120px, 120px 120px;
     background-image:
-        linear-gradient(90deg, rgba(129, 235, 247, 0.1) 2px, transparent 2px),
-        linear-gradient(0, rgba(129, 235, 247, 0.1) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(184, 242, 248, 0.25) 2px, transparent 4px),
-        linear-gradient(0, rgba(184, 242, 248, 0.25) 2px, transparent 4px);
+        linear-gradient(90deg, rgba(129, 235, 247, 0.08) 2px, transparent 1px),
+        linear-gradient(0, rgba(129, 235, 247, 0.08) 2px, transparent 1px),
+        linear-gradient(90deg, rgba(184, 242, 248, 0.1) 2px, transparent 4px),
+        linear-gradient(0, rgba(184, 242, 248, 0.1) 2px, transparent 4px);
+    code{
+        background: rgba(148, 184, 189, 0.459);
+        padding: 4px;
+        border-radius: 4px;
+        font-size: inherit;
+    }
+    p{
+        border-left: 3px solid rgb(131, 205, 255);
+        padding-left: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        background-color: #a0a0a041;
+        font-size: 13px;
+    }
+    ul, ol{
+        font-size: 13px;
+    }
     pre{
         padding: 12px;
         color: #c9d1d9;
         background: #0d1117;
         border-radius: 12px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        font-size: 16px;
+        overflow-x: scroll;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        code{
+            background: inherit;
+            padding: 0;
+        }
+    }
+    pre::-webkit-scrollbar{
+        display: none;
+    }
+    h1,h2,h3,h4,h5,h6{
+        color: #43597e;
+    }
+    table{
+        font-size: 14px;
+        border-collapse: collapse;
+        border: 1px solid #aaa;
+        color: rgb(76, 119, 121);
+        tbody tr:nth-child(odd) {
+            background-color:#e2f6ff;
+        }
+        tbody tr:nth-child(even) {
+            background-color:#e5f5ed;
+        }
+        tr th,td{
+            text-align: start;
+            padding: 5px 10px;
+            border: 1px solid rgb(254, 255, 244);
+            vertical-align:baseline;
+        }
+        thead{
+            background: rgb(59, 59, 59) !important;
+            color: #fff;
+        }
+    }
+    hr{
+        height: 1px;
+        border: none;
+        border-bottom: 1px solid rgba(170, 170, 170, 0.4);
+    }
+    blockquote{
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 13px;
     }
 }
 
 .text_bg{
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     position: fixed;
     top: 0;
     left: 0;
@@ -145,14 +234,36 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    textarea{
+    overflow-y: auto;
+    >div{
         width: 1280px;
-        height: 90%;
-        background: rgb(200, 211, 195);
-        resize: none;
-        border-radius: 10px;
-        outline: none;
-        font-size: 18px;
-        font-weight: 600;
+        height: 100vh;
+        padding: 30px 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        >input{
+            padding: 5px 15px;
+            outline: none;
+            color: #fff;
+            background: #282c34;
+            border: none;
+            height: 35px;
+            margin: 5px 0;
+        }
+        .btn_com{
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-end;
+            >button{
+                width: 150px;
+                height: 35px;
+                background: #2a2e38;
+                outline: none;
+                border: none;
+                border-radius: 5px;
+                color: rgb(147, 120, 172);
+            }
+        }
     }
 }

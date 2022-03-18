@@ -19,22 +19,22 @@ export default function Header(){
         {
             img: require('../img/youxi.png').default,
             str: '游戏',
-            url: '/blog/game'
+            url: '/game'
         },
         {
             img: require('../img/gongju.png').default,
             str: '工具',
-            url: '/blog/tool'
+            url: '/tool'
         },
         {
             img: require('../img/dongtai.png').default,
             str: '动态',
-            url: '/blog/space'
+            url: '/space'
         },
         {
             img: require('../img/wangpan.png').default,
             str: '网盘',
-            url: '/blog/cloud'
+            url: '/cloud'
         }
     ]
 
@@ -71,7 +71,7 @@ export default function Header(){
                     {
                         linkArr.map((item, index) => (
                             <div key={index}>
-                                <NavLink className="link" exact activeStyle={{ color:'#00a1d6' }} to={ item.url }>
+                                <NavLink className="link" activeStyle={{ color:'#00a1d6' }} to={ item.url } exact>
                                     <img alt="" src={ item.img } />{item.str}
                                 </NavLink>
                             </div>

@@ -13,6 +13,9 @@ export default async function request ({ url, method, data={} }){// fetch请求�
 
     const res = await fetch(url, {
         method,
+        headers: {
+            'content-type': 'application/json'
+        },
         [method === 'get' ? null : 'body']: JSON.stringify(data),
     });
     const resData = await res.json();

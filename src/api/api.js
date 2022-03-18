@@ -2,10 +2,40 @@ import request from './request'
 
 
 const api = {
-    listRoute(){
+    getBlog(parmas){
         return request({
-            url: '/list/route',
-            method: 'get'
+            url: 'blogs/blog_paper',
+            method: 'get',
+            data: {
+                id: parmas.id
+            }
+        })
+    },
+
+    saveBlog(parmas){
+        return request({
+            url: 'blogs/write',
+            method: 'post',
+            data: {
+                title: "test_req",
+                content: parmas.content,
+                author: 'DoreamonZED'
+            }
+        })
+    },
+
+    getBlogNav(){
+        return request({
+            url: 'blogs/blogNav',
+            method: 'get',
+        })
+    },
+
+    getTitle(data){
+        return request({
+            url: 'blogs/getTitle',
+            method: 'get',
+            data
         })
     }
 }
