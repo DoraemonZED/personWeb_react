@@ -8,7 +8,6 @@ import Games from '../components/Games.js'
 import Tools from '../components/Tools.js'
 import Space from '../components/Space.js'
 import Cloud from '../components/Cloud.js'
-// import Error from '../components/Error.js'
 
 export default function Main(){
 
@@ -25,7 +24,7 @@ export default function Main(){
                     <Redirect from="/*" to="/error" />
                 </Switch>
             </div>
-            <div style={{ height: '140px',width: '100%', background: '#fff',marginTop: '50px' }}>
+            <div style={{ height: '140px', background: '#fff',marginTop: '50px', position: 'absolute', bottom: '0',left: '0',right:'0' }}>
                 
             </div>
         </div>

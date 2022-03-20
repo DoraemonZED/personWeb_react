@@ -21,29 +21,48 @@ export default function Home(){
 
     function propClick(data){
         history.replace({ pathname: '/blog', search: '?n='+data._id })
-        // console.log(parmas.get('n'))
-        console.log(location)
-
+        // let n = new URLSearchParams(location.search).get('n')
+        console.log( data,new URLSearchParams(location.search).get('n'));
+        getData(navState1)
     }
-    // useEffect(()=>{
-        
-    // })
+
+    function getData(val){
+        let n = new URLSearchParams(location.search).get('n')
+        console.log(n);
+        if(n == null) n = val[0]._id;
+
+        React.$api.getTitle({ navid: n  }).then(re => {
+
+            let t = new URLSearchParams(location.search).get('t')
+            console.log(t);
+            if(t == null) t = re.result[0]._id;
+            history.replace({ pathname: '/blog', search: '?n=' + n + '&t=' + t })
+            setBlogTitle(re.result)
+
+            React.$api.getBlog({ id: t }).then((r) => {
+                setmarkContent(r.result.content)
+            })
+
+        })
+    }
 
     useEffect(() => {
         React.$api.getBlogNav().then((res) => {
-            let a = res.result.filter( v => v.state === 1)
-            SetNavState1(a)
+
+            let nav = res.result.filter( v => v.state === 1)
+
+            SetNavState1(nav)
             SetNavState2(res.result.filter( v => v.state === 2))
-            React.$api.getTitle({ navid: a[0]._id  }).then(re => {
-                setBlogTitle(re.result)
-                React.$api.getBlog({ id: re.result[0]._id }).then((r) => {
-                    setmarkContent(r.result.content)
-                    // console.log(n)
-                    // window.history.pushState({}, 0, window.location.href+'?n='+a[0]._id+'&t='+re.result[0]._id)
-                })
-            })
+
+            getData(nav)
         })
+        
     },[])
+    // eslint-disable-line react-hooks/exhaustive-deps
+    
+        
+    
+
 
     hljs.configure({
         tabReplace: '',
