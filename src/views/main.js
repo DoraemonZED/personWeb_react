@@ -24,7 +24,7 @@ export default function Main(){
                     <Redirect from="/*" to="/error" />
                 </Switch>
             </div>
-            <div style={{ height: '140px', background: '#fff',marginTop: '50px', position: 'absolute', bottom: '0',left: '0',right:'0' }}>
+            <div style={{ height: '140px', background: '#fff', position: 'absolute', bottom: '0',left: '0',right:'0' }}>
                 
             </div>
         </div>
