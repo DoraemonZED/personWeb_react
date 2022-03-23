@@ -12,7 +12,6 @@
 }
 
 .hljs-title,
-.hljs-title.class_,
 .hljs-title.class_.inherited__,
 .hljs-title.function_ {
     /* prettylights-syntax-entity */
@@ -99,4 +98,12 @@
     /* prettylights-syntax-markup-deleted */
     color: #ffdcd7;
     background-color: #67060c;
+}
+
+.hljs-params{
+    color: #7dcc8a;
+}
+
+.class_{
+    color: #f2cc60;
 }

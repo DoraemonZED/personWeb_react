@@ -37,6 +37,14 @@ const api = {
             method: 'get',
             data
         })
+    },
+
+    sendBlogNav(data){
+        return request({
+            url: 'blogs/blogNav',
+            method: 'post',
+            data
+        })
     }
 }
 

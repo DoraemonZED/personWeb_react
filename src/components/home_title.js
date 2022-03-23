@@ -1,7 +1,9 @@
 import styles from './Home.module.scss'
+import { useParams } from 'react-router-dom'
 
-export default function Title(props){
-    const { myEdit, blogTitle } = props
+export default function Title({ myEdit, blogTitle, propClickTit }){
+
+    const params = useParams()
 
     return(
         <div className={ styles.home_title }>
@@ -11,7 +13,13 @@ export default function Title(props){
                     <span></span>
                     <div>
                         <div style={{ fontWeight: '500' }}>
-                           { blogTitle.map((val, index) => <div style={{ padding: '5px 10px', cursor: 'pointer' }} key={index}>{ val.title }</div>) }
+                           { blogTitle.map((val, index) => 
+                            <div 
+                                style={{ padding: '5px 10px', cursor: 'pointer' }} 
+                                key={index}
+                                className={val._id===params.t?styles.activeTitle:null}
+                                onClick={() => propClickTit(val) }
+                                >{ val.title }</div>) }
                         </div>
                     </div>
                 </div>

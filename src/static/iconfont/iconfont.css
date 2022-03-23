@@ -2,9 +2,9 @@
   font-family: "iconfont"; /* Project id 3193271 */
   /* Color fonts */
   src: 
-       url('iconfont.woff2?t=1645360397795') format('woff2'),
-       url('iconfont.woff?t=1645360397795') format('woff'),
-       url('iconfont.ttf?t=1645360397795') format('truetype');
+       url('iconfont.woff2?t=1647940535763') format('woff2'),
+       url('iconfont.woff?t=1647940535763') format('woff'),
+       url('iconfont.ttf?t=1647940535763') format('truetype');
 }
 
 .iconfont {
@@ -13,6 +13,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shuju:before {
+  content: "\e771";
 }
 
 .icon-shanchu:before {

@@ -16,7 +16,7 @@ export default function Main(){
             <Header />
             <div className="content">
                 <Switch>
-                    <Route path="/blog" component={ Home } />
+                    <Route path="/blog/:n?/:t?" component={ Home } />
                     <Route path="/game" exact component={ Games } />
                     <Route path="/tool" exact component={ Tools } />
                     <Route path="/space" exact component={ Space } />

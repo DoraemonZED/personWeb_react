@@ -18,7 +18,7 @@
 .boxTitle{
     font-size: 14px;
     font-weight: 600;
-    border-bottom: 1px solid #e5e9ef;
+    border-bottom: 2px solid #e5e9ef;
 }
 .boxTitle_height{
     display: flex;
@@ -38,7 +38,7 @@
         color: #00a1d6;
     }
     .active{
-        background: rgb(231, 233, 233);
+        background: rgb(206, 230, 235);
         color: #00a1d6;
     }
 }
@@ -48,10 +48,47 @@
     color: rgb(77, 77, 77);
     font-weight: 600;
     font-family: Microsoft YaHei;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     cursor: pointer;
     letter-spacing: 1px;
+    box-sizing: border-box;
+    padding: 0 30px;
+}
+.titlenav.activeNav{
+    background: rgb(206, 230, 235);
+    color: #00a1d6;
+}
+.tianjia{
+    text-align: center;
+    padding: 10px 5px;
+    background: rgb(225, 248, 255);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    >input{
+        width: 10px;
+        height: 35px;
+        border-radius: 30px;
+        padding: 0 15px;
+        transition: all .7s;
+        opacity: 0;
+    }
+    >input.active{
+        width: 100%;
+        opacity: 1;
+    }
+    >i{
+        position: absolute;
+        transition: all .7s;
+        right: 50%;
+        transform: translateX(50%);
+    }
+    >i.active{
+        right: 10px;
+        transform: translateX(0);
+    }
 }
 
 .home_title{
@@ -73,7 +110,7 @@
             opacity: 0;
             transition: all .5s;
             >div{
-                box-shadow:10px 10px 5px rgb(221, 221, 221);
+                box-shadow:10px 10px 5px rgba(221, 221, 221, 0.5);
                 padding: 10px 0;
                 background-color: #FFF;
                 border-radius: 6px;
@@ -99,6 +136,10 @@
             >div::-webkit-scrollbar{
                 display: none;
             }
+        }
+        .activeTitle{
+            border-bottom: 1px solid #00a1d6;
+            color: #00a1d6;
         }
     }
     .section_icon:hover{
@@ -151,22 +192,23 @@
         linear-gradient(90deg, rgba(184, 242, 248, 0.1) 2px, transparent 4px),
         linear-gradient(0, rgba(184, 242, 248, 0.1) 2px, transparent 4px);
     code{
-        background: rgba(148, 184, 189, 0.459);
+        background: rgba(191, 218, 208, 0.5);
         padding: 4px;
         border-radius: 4px;
         font-size: inherit;
     }
     p{
-        border-left: 3px solid rgb(131, 205, 255);
         padding-left: 10px;
         font-size: 14px;
         font-weight: 500;
         letter-spacing: 1px;
-        background-color: #a0a0a041;
         font-size: 13px;
     }
     ul, ol{
         font-size: 13px;
+        background: rgba(0, 0, 0, 0.05);
+        padding: 5px 20px;
+        box-sizing: border-box;
     }
     pre{
         padding: 12px;
@@ -187,7 +229,7 @@
         display: none;
     }
     h1,h2,h3,h4,h5,h6{
-        color: #43597e;
+        color: #98beff;
     }
     table{
         font-size: 14px;
@@ -217,9 +259,13 @@
         border-bottom: 1px solid rgba(170, 170, 170, 0.4);
     }
     blockquote{
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 20px;
+        margin-right: 20px;
         font-size: 13px;
+        background: rgba(0, 0, 0, 0.05);
+        border-left: 6px solid rgb(131, 205, 255);
+        padding: 5px 0;
+        box-sizing: border-box;
     }
 }
 
