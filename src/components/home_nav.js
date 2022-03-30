@@ -8,15 +8,23 @@ export default function NavCard({ Chapter, propClick, navStates, selectNavStates
     const params = useParams()
     let myInput = useRef()
     let myI = useRef()
-    Toast.info()
+    
+    // useEffect(() => {
+        
+    // },[])
 
     let [activeAdd, setactiveAdd] = useState(false)
+
+    function text(){
+        
+    }
 
     function show(event){
         if(event.target === myInput.current) return
         if(event.target !== myI.current){
             setactiveAdd(false)
             document.removeEventListener('click', show)
+            myInput.current.value = ''
         }
     }
 
@@ -26,9 +34,14 @@ export default function NavCard({ Chapter, propClick, navStates, selectNavStates
                 state: navStates,
                 title: myInput.current.value
             }).then((res) => {
+                myInput.current.value = ''
                 if(res.code === 200){
                     addNav(res.result)
-                    myInput.current.value = ''
+                }else{
+                    Toast({
+                        state: 3,
+                        data: res.message
+                    })
                 }
             })
         }else{
@@ -59,7 +72,7 @@ export default function NavCard({ Chapter, propClick, navStates, selectNavStates
                     })
                 }
             </div>
-            <div className={ styles.tianjia } title="添加新分类">
+            <div className={ styles.tianjia } title="添加新分类" onClick={() => text()}>
                 <input ref={myInput} className={ activeAdd?styles.active:null } />
                 <i
                     ref={myI} 

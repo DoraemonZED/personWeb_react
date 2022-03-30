@@ -2,13 +2,11 @@ import request from './request'
 
 
 const api = {
-    getBlog(parmas){
+    getBlog(data){
         return request({
             url: 'blogs/blog_paper',
             method: 'get',
-            data: {
-                id: parmas.id
-            }
+            data
         })
     },
 

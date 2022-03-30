@@ -2,6 +2,7 @@ import styles from './Home.module.scss'
 import NavCard from './home_nav.js'
 import Title from './home_title.js'
 import Text from './home_text.js'
+import MyTable from './MyTable.js'
 import { useEffect, useState } from 'react'
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
@@ -17,6 +18,7 @@ export default function Home(){
     let [navState1, SetNavState1] = useState([])
     let [navState2, SetNavState2] = useState([])
     let [blogTitle, setBlogTitle] = useState([])
+    let [navStates, setNavStates] = useState(1)
         
 
     function propClickNav(data){
@@ -24,7 +26,7 @@ export default function Home(){
             if(res.code === 200){
                 history.replace({ pathname: '/blog/' + data._id + '/' + res.result[0]._id })
                 setBlogTitle(res.result)
-                React.$api.getBlog({ id: res.result[0]._id }).then((r) => {
+                React.$api.getBlog({ id: res.result[0]._id, state: navStates }).then((r) => {
                     setmarkContent(r.result.content)
                 })
             }
@@ -32,7 +34,7 @@ export default function Home(){
     }
     function propClickTit(data){
         history.replace({ pathname: '/blog/' + params.n + '/' + data._id })
-        React.$api.getBlog({ id: data._id  }).then(res => {
+        React.$api.getBlog({ id: data._id, state: navStates  }).then(res => {
             if( res.code === 200 ){
                 setmarkContent(res.result.content)
             }
@@ -58,7 +60,7 @@ export default function Home(){
                     history.replace({ pathname: '/blog/' + n + '/' + t })
                     setBlogTitle(re.result)
 
-                    React.$api.getBlog({ id: t }).then((r) => {
+                    React.$api.getBlog({ id: t, state: navStates }).then((r) => {
                         if(re.code === 200) {
                             setmarkContent(r.result.content)
                         }
@@ -91,12 +93,12 @@ export default function Home(){
     let [markContent, setmarkContent] = useState('')
     
     function getMark(id){
-        React.$api.getBlog({ id }).then((res) => {
+        React.$api.getBlog({ id, state: navStates }).then((res) => {
             setmarkContent(res.result.content)
         })
     }
 
-    let [navStates, setNavStates] = useState(1)
+    
     function selectNavStates(state){
         if(state !== navStates) setNavStates(state)
     }
@@ -124,7 +126,9 @@ export default function Home(){
                         <Title blogTitle={ blogTitle } myEdit={ (val) => setTextState(val) } propClickTit={ propClickTit } />
                     </div>
                     <div className={styles.bg_c}>
-                        <div dangerouslySetInnerHTML={{ __html: marked(markContent) }}></div>
+                        {
+                            navStates===1?<div dangerouslySetInnerHTML={{ __html: marked(markContent) }}></div>:<MyTable />
+                        }
                     </div>
                     <em style={{ fontSize: '12px', color: '#fdcc8a' }}>注: 笔记仅供参考，如有错误欢迎留言指正。</em>
                 </div>

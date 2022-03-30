@@ -3,22 +3,13 @@ import ReactDOM from 'react-dom'
 import Toast from './Toast'
 
 
-let div = document.createElement('div')
-document.body.appendChild(div)
+export default function init(a){
+    let myToast = document.getElementById('myToast')
+    if(myToast) document.body.removeChild(myToast)
+    
+    let div = document.createElement('div')
+    div.id = 'myToast'
+    document.body.appendChild(div)
+    ReactDOM.render(<Toast message={ a } rootDiv={ div } />, div)
 
-
-
-const toast = ReactDOM.render(<Toast />, div, res => {
-    console.log(res)
-})
-
-
-
-
-const method = {
-    info(){
-        console.log(toast)
-    }
 }
-
-export default method
