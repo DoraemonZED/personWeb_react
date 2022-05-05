@@ -62,7 +62,6 @@
 .tianjia{
     text-align: center;
     padding: 10px 5px;
-    // background: rgb(225, 248, 255);
     position: relative;
     display: flex;
     align-items: center;
@@ -299,9 +298,11 @@
         }
         .btn_com{
             margin-top: 10px;
+            
             display: flex;
             justify-content: flex-end;
             >button{
+                margin-left: 10px;
                 width: 150px;
                 height: 35px;
                 background: #2a2e38;

@@ -4,19 +4,23 @@ import CodeMirror from "@uiw/react-codemirror";
 import { oneDark } from '@codemirror/theme-one-dark';
 import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 import { languages } from '@codemirror/language-data';
-import React from 'react';
+import React,{ useRef } from 'react';
 
-export default function Text(props){
-    const { modelState } = props
+export default function Text({ closeText, navId, titId }){
+
+    console.log(navId, titId);
     
-    let codeValue = ''
+    let codeValue = ''//保存文章内容
+    let titInput = useRef()//获取文章标题
 
-    // let [active, setActive] = useState(false)
     function getCodevalue(){
-        console.log(codeValue)
-        React.$api.saveBlog({content: codeValue}).then((res) => {
+        React.$api.saveBlog({
+            content: codeValue,
+            title: titInput.current.value,
+            navid: navId
+        }).then((res) => {
             if(res.code === 200){
-                modelState(false, res.result)
+                closeText({navid: navId, titid: res.result})
             }
         })
     }
@@ -24,7 +28,7 @@ export default function Text(props){
     return(
         <div className={ style.text_bg } >
             <div>
-                <input placeholder='文章标题' />
+                <input ref={titInput} placeholder='文章标题' />
                 <CodeMirror
                     style={{'fontSize': '16px', 'flex': '1', 'overflow': 'auto'}}
                     width="100%"
@@ -34,6 +38,7 @@ export default function Text(props){
                     extensions={[markdown({ base: markdownLanguage, codeLanguages: languages })]}
                 />
                 <div className={style.btn_com}>
+                    <button onClick={ () => closeText() }>关闭</button>
                     <button onClick={ getCodevalue }>保存笔记</button>
                 </div>
             </div>

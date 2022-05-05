@@ -30,9 +30,11 @@ export default function NavCard({ Chapter, propClick, navStates, selectNavStates
                 state: navStates,
                 title: myInput.current.value
             }).then((res) => {
-                myInput.current.value = ''
                 if(res.code === 200){
                     addNav(res.result)
+                    setactiveAdd(false)
+                    document.removeEventListener('click', show)
+                    myInput.current.value = ''
                 }else{
                     Toast({
                         state: 3,

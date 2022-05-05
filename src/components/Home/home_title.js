@@ -29,7 +29,7 @@ export default function Title({ myEdit, blogTitle, propClickTit }){
                 <span>&nbsp;&nbsp;已完结&nbsp;<span>更新于: 2022-2-21</span></span>
             </div>
             <div className={ styles.handle }>
-                <i title="编辑" onClick={() => myEdit(true)}  className='iconfont icon-bianji'></i>
+                <i title="编辑" onClick={() => myEdit()}  className='iconfont icon-bianji'></i>
                 <i title="点赞" className='iconfont icon-dianzan'></i>
                 <i title="删除" className='iconfont icon-shanchu'></i>
                 <i title='分享' className='iconfont icon-fenxiang'></i>

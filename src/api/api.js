@@ -14,11 +14,7 @@ const api = {
         return request({
             url: 'blogs/write',
             method: 'post',
-            data: {
-                title: "test_req",
-                content: parmas.content,
-                author: 'DoreamonZED'
-            }
+            data: parmas
         })
     },
 

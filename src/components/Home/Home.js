@@ -15,11 +15,11 @@ export default function Home(){
     const history = useHistory()
     const params = useParams()
 
-    let [navState1, SetNavState1] = useState([])
-    let [navState2, SetNavState2] = useState([])
-    let [blogTitle, setBlogTitle] = useState([])
-    let [navStates, setNavStates] = useState(1)
-        
+    let [navState1, SetNavState1] = useState([])//学习笔记的导航数据
+    let [navState2, SetNavState2] = useState([])//速查表格的导航数据
+    let [blogTitle, setBlogTitle] = useState([])//根据导航查询到的文章标题
+    let [navStates, setNavStates] = useState(1)//判断文章导航是表格还是笔记
+    
 
     function propClickNav(data){
         React.$api.getTitle({ navid: data._id  }).then(res => {
@@ -29,6 +29,10 @@ export default function Home(){
                 React.$api.getBlog({ id: res.result[0]._id, state: navStates }).then((r) => {
                     setmarkContent(r.result.content)
                 })
+            }else if(res.code === 404){
+                if(navStates === 1){
+                    showText(data._id)
+                }
             }
         })
     }
@@ -41,6 +45,16 @@ export default function Home(){
         })
     }
 
+    let [textState, setTextState] = useState(false);//控制编辑框显示隐藏
+    let [textnavid, settextnavid] = useState(null);//编辑框编辑时标识是哪个nav下的文章
+    let [texttitid, settexttitid] = useState(null);//如果是重新编辑需要文章的id
+    function showText(navid, titid){//显示blog编辑框
+        if(navid) {
+            textnavid = settextnavid(navid)
+            texttitid = settexttitid(titid)
+            if(!textState) setTextState(true)
+        }
+    }
 
     //首次加载 修改pramas所以不需要依赖项
     useEffect(() => {
@@ -66,8 +80,6 @@ export default function Home(){
                         }
                     })
                 }
-                
-
             })
         })
         
@@ -89,16 +101,17 @@ export default function Home(){
         smartLists: true, // 使用比原生markdown更时髦的列表
         smartypants: false, // 使用更为时髦的标点
     })
-    let [textState, setTextState] = useState(false)
+    
     let [markContent, setmarkContent] = useState('')
     
-    function getMark(id){
-        React.$api.getBlog({ id, state: navStates }).then((res) => {
+    function getMark({navid, titid}){
+        
+        history.replace({ pathname: '/blog/' + navid + '/' + titid })
+        React.$api.getBlog({ id: titid, state: navStates }).then((res) => {
             setmarkContent(res.result.content)
         })
     }
 
-    
     function selectNavStates(state){
         if(state !== navStates) setNavStates(state)
     }
@@ -114,16 +127,30 @@ export default function Home(){
     
     return(
         <div style={{display: "flex", justifyContent: "space-between"}}>
-            <div  style={{ display: textState ? "block":"none" }}>
-                <Text modelState={ (val, id) => { setTextState(val); if(!val) getMark(id) }} />
-            </div>
+            {   /* 文章编辑 */
+                textState?<Text 
+                            closeText={(val)=> {setTextState(false); if(val) getMark(val) } } 
+                            navId={ textnavid } 
+                            titId={ texttitid } 
+                            />:''
+            }
             <div className={styles.title}>
-                <NavCard Chapter={ navStates===1?navState1:navState2 } navStates={navStates} propClick={ propClickNav } selectNavStates={ selectNavStates } addNav={ addNav } />
+                <NavCard 
+                    Chapter={ navStates===1?navState1:navState2 } 
+                    navStates={navStates} 
+                    propClick={ propClickNav } 
+                    selectNavStates={ selectNavStates } 
+                    addNav={ addNav } 
+                />
             </div>
             <div className={styles.detail}>
                 <div className={styles.box}>
                     <div className={styles.boxTitle}>
-                        <Title blogTitle={ blogTitle } myEdit={ (val) => setTextState(val) } propClickTit={ propClickTit } />
+                        <Title 
+                            blogTitle={ blogTitle } 
+                            myEdit={ () => showText(params.n, params.t) } 
+                            propClickTit={ propClickTit } 
+                        />
                     </div>
                     <div className={styles.bg_c}>
                         {
