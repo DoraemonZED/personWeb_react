@@ -1,17 +1,13 @@
 import styles from './Home.module.scss'
 import { useParams } from 'react-router-dom'
 import React, { useRef, useState } from 'react'
-import Toast from './Toast/index'
+import Toast from '../Toast/index'
 
 export default function NavCard({ Chapter, propClick, navStates, selectNavStates, addNav }){
 
     const params = useParams()
     let myInput = useRef()
     let myI = useRef()
-    
-    // useEffect(() => {
-        
-    // },[])
 
     let [activeAdd, setactiveAdd] = useState(false)
 
@@ -59,7 +55,7 @@ export default function NavCard({ Chapter, propClick, navStates, selectNavStates
                 <div className={ navStates===1?styles.active:'' } onClick={ () => selectNavStates(1) }>学习笔记</div>
                 <div className={ navStates===2?styles.active:'' } onClick={ () => selectNavStates(2) }>速查表格</div>
             </div>
-            <div style={{ height:'500px',overflowY:'auto' }}>
+            <div>
                 {
                     Chapter.map((item, index)=>{
                         return(

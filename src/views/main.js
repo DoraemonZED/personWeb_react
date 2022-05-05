@@ -3,11 +3,11 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import "./main.scss";
 
 import Header from '../components/Header.js'
-import Home from '../components/Home.js'
-import Games from '../components/Games.js'
-import Tools from '../components/Tools.js'
-import Space from '../components/Space.js'
-import Cloud from '../components/Cloud.js'
+import Home from '../components/Home/Home.js'
+import Games from '../components/Games/Games.js'
+import Tools from '../components/Tools/Tools.js'
+import Space from '../components/Space/Space.js'
+import Cloud from '../components/Cloud/Cloud.js'
 
 export default function Main(){
 

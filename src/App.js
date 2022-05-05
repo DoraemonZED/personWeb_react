@@ -5,7 +5,7 @@ import "./App.scss";
 
 import Main from './views/main.js'
 import Resume from './views/resume.js'
-import Error from './components/Error';
+import Error from './views/error.js';
 
 
 function App() {
