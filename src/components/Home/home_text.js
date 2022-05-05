@@ -6,7 +6,7 @@ import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 import { languages } from '@codemirror/language-data';
 import React,{ useRef } from 'react';
 
-export default function Text({ closeText, navId, titId }){
+export default function Text({ closeText, navId, titId, markContent }){
 
     console.log(navId, titId);
     
@@ -33,6 +33,7 @@ export default function Text({ closeText, navId, titId }){
                     style={{'fontSize': '16px', 'flex': '1', 'overflow': 'auto'}}
                     width="100%"
                     height="100%"
+                    value={ markContent }
                     theme={ oneDark }
                     onChange={(editor) => { codeValue = editor }}
                     extensions={[markdown({ base: markdownLanguage, codeLanguages: languages })]}

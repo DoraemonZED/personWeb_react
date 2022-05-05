@@ -107,6 +107,13 @@ export default function Home(){
     function getMark({navid, titid}){
         
         history.replace({ pathname: '/blog/' + navid + '/' + titid })
+
+        React.$api.getTitle({ navid }).then(res => {
+            if(res.code === 200) {
+                setBlogTitle(res.result)
+            }
+        })
+
         React.$api.getBlog({ id: titid, state: navStates }).then((res) => {
             setmarkContent(res.result.content)
         })
@@ -132,6 +139,7 @@ export default function Home(){
                             closeText={(val)=> {setTextState(false); if(val) getMark(val) } } 
                             navId={ textnavid } 
                             titId={ texttitid } 
+                            markContent={ markContent }
                             />:''
             }
             <div className={styles.title}>
