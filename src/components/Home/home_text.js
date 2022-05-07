@@ -6,34 +6,37 @@ import { markdown, markdownLanguage } from '@codemirror/lang-markdown';
 import { languages } from '@codemirror/language-data';
 import React,{ useRef } from 'react';
 
-export default function Text({ closeText, navId, titId, markContent }){
+export default function Text({ closeText, navId, titId, markContent, markTitle }){
 
-    console.log(navId, titId);
     
     let codeValue = ''//保存文章内容
     let titInput = useRef()//获取文章标题
 
     function getCodevalue(){
-        React.$api.saveBlog({
-            content: codeValue,
-            title: titInput.current.value,
-            navid: navId
-        }).then((res) => {
-            if(res.code === 200){
-                closeText({navid: navId, titid: res.result})
-            }
-        })
+        if(codeValue) {
+            React.$api.saveBlog({
+                content: codeValue,
+                title: titInput.current.value,
+                navid: navId
+            }).then((res) => {
+                if(res.code === 200){
+                    closeText({navid: navId, titid: res.result})
+                }
+            })
+        }else{
+            closeText()
+        }
     }
 
     return(
         <div className={ style.text_bg } >
             <div>
-                <input ref={titInput} placeholder='文章标题' />
+                <input ref={titInput} value={ markTitle } placeholder='文章标题' />
                 <CodeMirror
                     style={{'fontSize': '16px', 'flex': '1', 'overflow': 'auto'}}
                     width="100%"
                     height="100%"
-                    value={ markContent }
+                    value={ titId?markContent:'' }
                     theme={ oneDark }
                     onChange={(editor) => { codeValue = editor }}
                     extensions={[markdown({ base: markdownLanguage, codeLanguages: languages })]}

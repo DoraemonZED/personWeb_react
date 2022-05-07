@@ -1,5 +1,9 @@
 @import '../src/static/iconfont/iconfont.css';
 
+body::-webkit-scrollbar {
+    display: none;
+}
+
 .hljs-doctag,
 .hljs-keyword,
 .hljs-meta .hljs-keyword,

@@ -162,19 +162,19 @@ export default function Resume(){
     //服务卡片
     let serverArr = [
         {
-            img: require('../img/server_1.jpg').default,
+            img: require('@/static/img/server_1.jpg').default,
             mains: '移动应用',
             intr: '包括移动端跨平台APP应用<br/>和微信小程序开发',
             item: 'APP · 小程序 · H5'
         },
         {
-            img: require('../img/server_2.jpg').default,
+            img: require('@/static/img/server_2.jpg').default,
             mains: 'PC应用或网站',
             intr: '包括Web网页搭建<br/>基于Electron框架的桌面应用',
             item: '桌面应用程序 · WebSite'
         },
     ]
-    console.log(1)
+    
     return (
         <div className="frame" ref={ frameRef } onScrollCapture={ () => frameScroll() }>
             <div className="topBar">
@@ -209,7 +209,7 @@ export default function Resume(){
                         <div>
                             <div className="card" >
                                 <div className="mc_header">
-                                    <img alt="" src={ require('../img/avator.webp').default } />
+                                    <img alt="" src={ require('@/static/img/avator.webp').default } />
                                     <div className="dot"></div>
                                 </div>
                                 <p className="mc_name">杨伟-前端开发</p>
@@ -236,7 +236,7 @@ export default function Resume(){
                                     <div><span>POST:</span><span>WEB</span></div>
                                 </div>
                                 <div className="border" style={{ marginBottom: '30px' }}></div>
-                                <a href={ require('../img/dongtai.png').default } className="mc_a_btn" download="yangwei.png">
+                                <a href={ require('@/static/img/dongtai.png').default } className="mc_a_btn" download="yangwei.png">
                                     DOWNLOAD PDF
                                 </a>
                             </div>

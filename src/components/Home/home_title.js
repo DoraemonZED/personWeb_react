@@ -1,7 +1,7 @@
 import styles from './Home.module.scss'
 import { useParams } from 'react-router-dom'
 
-export default function Title({ myEdit, blogTitle, propClickTit }){
+export default function Title({ myEdit, blogTitle, propClickTit, markTitle }){
 
     const params = useParams()
 
@@ -25,7 +25,7 @@ export default function Title({ myEdit, blogTitle, propClickTit }){
                 </div>
             </div>
             <div className={styles.main_title}>
-                <h3>VUE中传参的几种方式</h3>
+                <h3>{ markTitle }</h3>
                 <span>&nbsp;&nbsp;已完结&nbsp;<span>更新于: 2022-2-21</span></span>
             </div>
             <div className={ styles.handle }>

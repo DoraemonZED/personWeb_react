@@ -1,12 +1,12 @@
 import React from "react";
 import "./Header.scss";
-import { useHistory, NavLink  } from "react-router-dom"
+import { useHistory, NavLink } from "react-router-dom"
 
-export default function Header(){
+export default function Header() {
 
     const history = useHistory()
 
-    function toResume(){
+    function toResume() {
         history.push('/resume')
     }
 
@@ -41,24 +41,24 @@ export default function Header(){
     return (
         <div className="top">
             <div className="topHead">
-                <img className="bgimg" alt="" src={ require('../img/head_bg.webp').default } />
+                <img className="bgimg" alt="" src={require('../img/head_bg.webp').default} />
                 <div className="info">
                     <div className="head">
                         <div className="photo">
-                            <img alt="" src={ require('../img/avator.webp').default } />
+                            <img alt="" src={require('../img/avator.webp').default} />
                             <span>未登录</span>
                         </div>
                         <div className="intr">
                             <div>
                                 <span className="title">哆啦A梦Hero</span>
-                                <span className="tag" style={{ background:'#00a1d5' }}>技术宅</span>
-                                <span className="tag" style={{ background:'#fb7299' }}>前端开发</span>
-                                <span className="tag" style={{ background:'#5c968e' }}>NodeJS</span>
+                                <span className="tag" style={{ background: '#00a1d5' }}>技术宅</span>
+                                <span className="tag" style={{ background: '#fb7299' }}>前端开发</span>
+                                <span className="tag" style={{ background: '#5c968e' }}>NodeJS</span>
                             </div>
                             <p>一只梦想改变世界的程序员</p>
                         </div>
                         <div className="resume">
-                            <button onClick={ toResume }>我的简历</button>
+                            <button onClick={toResume}>我的简历</button>
                         </div>
                     </div>
                     <div className="setting">
@@ -71,15 +71,15 @@ export default function Header(){
                     {
                         linkArr.map((item, index) => (
                             <div key={index}>
-                                <NavLink className="link" activeStyle={{ color:'#00a1d6' }} to={ item.url } exact>
-                                    <img alt="" src={ item.img } />{item.str}
+                                <NavLink className="link" activeStyle={{ color: '#00a1d6' }} to={item.url} exact>
+                                    <img alt="" src={item.img} />{item.str}
                                 </NavLink>
                             </div>
                         ))
                     }
-                    <div className="search"><img alt="" src={ require('../img/sousuo.png').default } /><input type="text" placeholder="搜索"  /></div>
+                    <div className="search"><img alt="" src={require('../img/sousuo.png').default} /><input type="text" placeholder="搜索" /></div>
                 </div>
-                
+
                 <div className="logs">
                     <div title="12">
                         <p>文章数</p>
@@ -95,6 +95,6 @@ export default function Header(){
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     )
 }

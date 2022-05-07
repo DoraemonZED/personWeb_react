@@ -19,16 +19,24 @@ export default function Home(){
     let [navState2, SetNavState2] = useState([])//速查表格的导航数据
     let [blogTitle, setBlogTitle] = useState([])//根据导航查询到的文章标题
     let [navStates, setNavStates] = useState(1)//判断文章导航是表格还是笔记
-    
+
+    let [markContent, setmarkContent] = useState('')//渲染文章内容
+    let [markTitle, setMarkTitle] = useState('')//渲染文章标题
+    function getBlog({ id }){
+        React.$api.getBlog({ id }).then((r) => {
+            if(r.code === 200) {
+                setmarkContent(r.result.content)
+                setMarkTitle(r.result.title)
+            }
+        })
+    }
 
     function propClickNav(data){
         React.$api.getTitle({ navid: data._id  }).then(res => {
             if(res.code === 200){
                 history.replace({ pathname: '/blog/' + data._id + '/' + res.result[0]._id })
                 setBlogTitle(res.result)
-                React.$api.getBlog({ id: res.result[0]._id, state: navStates }).then((r) => {
-                    setmarkContent(r.result.content)
-                })
+                getBlog({ id: res.result[0]._id })
             }else if(res.code === 404){
                 if(navStates === 1){
                     showText(data._id)
@@ -38,11 +46,7 @@ export default function Home(){
     }
     function propClickTit(data){
         history.replace({ pathname: '/blog/' + params.n + '/' + data._id })
-        React.$api.getBlog({ id: data._id, state: navStates  }).then(res => {
-            if( res.code === 200 ){
-                setmarkContent(res.result.content)
-            }
-        })
+        getBlog({ id: data._id })
     }
 
     let [textState, setTextState] = useState(false);//控制编辑框显示隐藏
@@ -51,7 +55,7 @@ export default function Home(){
     function showText(navid, titid){//显示blog编辑框
         if(navid) {
             textnavid = settextnavid(navid)
-            texttitid = settexttitid(titid)
+            if(titid) texttitid = settexttitid(titid)
             if(!textState) setTextState(true)
         }
     }
@@ -73,12 +77,7 @@ export default function Home(){
                     if(t == null) t = re.result[0]._id;
                     history.replace({ pathname: '/blog/' + n + '/' + t })
                     setBlogTitle(re.result)
-
-                    React.$api.getBlog({ id: t, state: navStates }).then((r) => {
-                        if(re.code === 200) {
-                            setmarkContent(r.result.content)
-                        }
-                    })
+                    getBlog({ id: t })
                 }
             })
         })
@@ -102,7 +101,7 @@ export default function Home(){
         smartypants: false, // 使用更为时髦的标点
     })
     
-    let [markContent, setmarkContent] = useState('')
+    
     
     function getMark({navid, titid}){
         
@@ -114,9 +113,7 @@ export default function Home(){
             }
         })
 
-        React.$api.getBlog({ id: titid, state: navStates }).then((res) => {
-            setmarkContent(res.result.content)
-        })
+        getBlog({ id: titid })
     }
 
     function selectNavStates(state){
@@ -140,6 +137,7 @@ export default function Home(){
                             navId={ textnavid } 
                             titId={ texttitid } 
                             markContent={ markContent }
+                            markTitle={ markTitle }
                             />:''
             }
             <div className={styles.title}>
@@ -158,6 +156,7 @@ export default function Home(){
                             blogTitle={ blogTitle } 
                             myEdit={ () => showText(params.n, params.t) } 
                             propClickTit={ propClickTit } 
+                            markTitle={ markTitle }
                         />
                     </div>
                     <div className={styles.bg_c}>
